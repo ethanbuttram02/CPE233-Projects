@@ -1,0 +1,9 @@
+#test for shit
+li x5, 0x11000000
+
+lhu x7, 0(x5)
+lw x6, 0(x5)
+
+
+
+sw x7, 0x40(x5)

@@ -1,0 +1,14 @@
+li x5, 0x11000000
+lw x6, 0(x5)			#loads the 32b input value from x5 
+lhu x7, 0(x5)			#loads the last 16b of x5 onto x7
+srli x6, x6, 0x00000010		#shifts the 32b value to be a 16b unsigned value to isolate the 2 16b unsigned numbers for multiplication
+
+beqz x6, jump			#if x6 is zero, output to LED's, no loop needed
+
+Mult: 	
+beqz x7, jump			#if x7 is zero, end program, otherwise, we loop, adding x6 to x8 repeatedly, similar to how 5*3 is 5+5+5
+addi x7, x7, -1			#decrements x7 by 1
+add x8, x8, x6			#adds x6 to an empty register
+j Mult				#loop
+
+jump: sw x8, 0x00000040(x5)	#output to LEDs
