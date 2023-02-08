@@ -1,0 +1,5 @@
+#Part 2
+li x5, 0x11000000	#stores 0x1100_0000 address to x5
+lh x6, 0(x5)		#writes value of x5 to x6
+neg x6, x6		#2's complement's x6 back to x6
+sh x6, 0x20(x5)		#writes the 2's complement to the LED's at address 0x1100_0020 by appending the address

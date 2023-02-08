@@ -1,0 +1,13 @@
+#Part 1
+li x5, 0x1100_0000 	#putting switch address at register 5
+lhu x6, 0(x5)		#takes a number (zero, here) and adds it to x5, stores it in x6
+lhu x7, 0(x5)
+lhu x8, 0(x5)		#stores each of the 3 numbers at 3 separate addresses
+add x9, x6, x7		#adds the data in x6 and x7, stores it in x9
+add x10, x8, x9		#adds data in x8 and the newly made x9 (the sum of x6 and x7) and stores it in x10
+sh x10, 0x20(x5)	#stores the data at the LED memory address. The address is 0x20 offset from memory address for the switches at x5 so you add them with the 0x20(x5) operation
+
+#li = list immediate
+#lhu = load halfword unsigned
+#add = add, destination, addr1, addr2
+#sh = store halfword

@@ -1,0 +1,26 @@
+#beq		branch if equal
+#bne 		branch if not equal
+#blt / bltu	branch if less than, branch if less than (unsigned)
+#bge / begu	branch if greater than, branch if greater than (unsigned)
+
+li x5, 0x11000000			#loads address to x5
+lw x6, 0(x5)				#loads value from x5 to x6
+andi x7, x6, 0x00000003			#ands the value from x6 and 0x3
+beqz x7, DivisibleBy4			#if x7 is 0, then jump to DivisibleBy4
+li x8, 0x00000002			#stores 0x00000002 at x8
+beq x7, x8, Even			#if x8 is 2, the value is even, jump to even
+
+addi x6, x6, 0x00000555			#adds 1365 (4095/3) 3 times to the value from x5 (stored in x6)
+addi x6, x6, 0x00000555			
+addi x6, x6, 0x00000555			
+srli x9, x6, 1				#shifts right by 1 (dividing by 2)
+sw x9, 0x00000040(x5)			#stores the value of adding 4095 and dividing by 2 in x7
+j trap					#ends the program
+
+DivisibleBy4: not x6, x6		#inverts all bits of the value of x5 (stored in x6)
+sw x6, 0x00000040(x5)			#writes the value in x6 to 0x1100_0040 (the address of the LEDs
+j trap					#jumps to trap (break or return)
+
+Even: addi x6, x6, -1 			#subtract the value at x6 by 1, store it at x6
+sw x6, 0x00000040(x5)
+trap: j trap				#end
