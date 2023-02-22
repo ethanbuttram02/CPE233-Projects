@@ -1,0 +1,15 @@
+.data
+
+ARRAY:    .space20        # allocated memory for 20 bytes or 5 words
+
+ARRAY2:   .byte 3, 7, 8   # 3 stored at address ARRAY2, 7 stored at ARRAY2 + 1, 8 stored at ARRAY2 + 2
+
+.text
+
+la s0, ARRAY2   # puts address of ARRAY2 in register s0
+
+la s1, ARRAY    # puts address of ARRAY in register s1
+
+lb t0, 1(s0)    # loads contents (7) of ARRAY2 + 1 address to register t0
+
+lw t1, 8(s1)    # loads contents (word) of ARRAY + 8 address to register t1

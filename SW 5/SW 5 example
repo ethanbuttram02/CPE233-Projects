@@ -1,0 +1,13 @@
+.data
+
+D_LBL1: .byte   0x10   # D_LBL1 = address 0x6000
+.byte 0x20
+.half 0x30
+.word 0x40    # word at address 0x6004
+
+D_LBL2: .byte   0x50    # D_LBL2 = address 0x6008
+
+.text
+
+la x5, D_LBL1   # put 0x6000 into register x5
+lb x6, 1(x5)       # puts 0x20 into register x6
