@@ -1,0 +1,7 @@
+Running: xsim.dir/BAGsim_behav/xsimk.exe -simmode gui -wdb BAGsim_behav.wdb -simrunnum 0 -socket 53125
+Design successfully loaded
+Design Loading Memory Usage: 7364 KB (Peak: 7364 KB)
+Design Loading CPU Usage: 61 ms
+Simulation completed
+Simulation Memory Usage: 7984 KB (Peak: 7984 KB)
+Simulation CPU Usage: 77 ms
